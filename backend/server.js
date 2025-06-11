@@ -15,6 +15,12 @@ const loginRoutes = require('./routes/login');
 const socialRoutes = require('./routes/social');
 
 const app = express();
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://ajs-website-8d33.vercel.app'
+];
+// ✅ Added Vercel URL to CORS whitelist
 
 // ✅ Async IIFE to connect DB before server starts
 (async () => {
@@ -32,9 +38,17 @@ function startServer() {
 
     // ✅ Middleware
     app.use(cors({
-        origin: ['http://localhost:3000', 'http://localhost:3001'],
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                console.error(`❌ Blocked by CORS: ${origin}`);
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
         credentials: true
     }));
+
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
