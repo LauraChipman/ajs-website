@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌙 Dark Background + Main Font */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #0a0a0a;
+  color: #ededed;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔠 Headers use Bebas Neue */
+h1, h2, h3, .neon-header {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* 🖋️ Roboto for form controls */
+input, textarea, button, label {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 🧭 Navbar Styles */
+nav {
+  /* REMOVE or comment these lines: */
+    background-color: rgba(0, 0, 0, 0);
+  /* color: #ededed !important; */
+  /* box-shadow: none !important; */
+  border: none !important;
+  z-index: 100 !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.font-heading {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* 🔧 Header & Layout Fixes */
+header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* 🟡 Optional utility class for headers */
+.custom-bebas {
+  font-family: 'Bebas Neue', sans-serif !important;
+}
+
+.font-neon {
+  font-family: 'Bebas Neue', sans-serif !important;
+  letter-spacing: 0.05em;
+}
+/* 🔒 Ensure Dark Nav Consistency */
+.dark nav {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+@layer utilities {
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out forwards;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+}
