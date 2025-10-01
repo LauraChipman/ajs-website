@@ -34,7 +34,8 @@ function startServer() {
     const allowedOrigins = [
         'http://localhost:3000',
         'http://localhost:3001',
-        'https://ajs-website-8d33.vercel.app'
+        'https://ajs-website-8d33.vercel.app',
+        'https://ajs-website.vercel.app'
     ];
 
     app.use(cors({
