@@ -11,7 +11,7 @@ export default function AboutPage() {
     useEffect(() => {
         const fetchAbout = async () => {
             try {
-                const res = await axios.get('${API_BASE}/api/about');
+                const res = await axios.get(`${API_BASE}/api/about`);
                 if (res.data?.content) {
                     setAboutContent(res.data.content); // Updated to expect a single object
                 }

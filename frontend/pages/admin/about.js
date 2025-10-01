@@ -14,7 +14,7 @@ export default function AdminAboutPage() {
 
     const fetchAbout = async () => {
         try {
-            const res = await axios.get('${API_BASE}/api/about');
+            const res = await axios.get(`${API_BASE}/api/about`);
             setAbout(res.data);
             setFormData(res.data.content);
         } catch (error) {
@@ -59,7 +59,7 @@ export default function AdminAboutPage() {
     const handleUndoDelete = async () => {
         if (!deletedAbout) return;
         try {
-            const res = await axios.post('${API_BASE}/api/about', {
+            const res = await axios.post(`${API_BASE}/api/about`, {
                 content: deletedAbout.content,
             });
             setAbout(res.data);
@@ -75,7 +75,7 @@ export default function AdminAboutPage() {
     const handleCreateNew = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('${API_BASE}/api/about', {
+            const res = await axios.post(`${API_BASE}/api/about`, {
                 content: newContent,
             });
             setAbout(res.data);

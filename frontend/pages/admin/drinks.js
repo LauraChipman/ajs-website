@@ -12,7 +12,7 @@ export default function AdminDrinksPage() {
     const [editingId, setEditingId] = useState(null);
 
     const fetchDrinks = async () => {
-        const res = await axios.get('${API_BASE}/api/drinks');
+        const res = await axios.get(`${API_BASE}/api/drinks`);
         setDrinks(res.data);
     };
 
@@ -39,7 +39,7 @@ export default function AdminDrinksPage() {
                 form.append('alcoholic', formData.alcoholic);
                 if (imageFile) form.append('file', imageFile);
 
-                await axios.post('${API_BASE}/api/drinks/upload', form, {
+                await axios.post(`${API_BASE}/api/drinks/upload`, form, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 setMessage('✅ Drink added!');

@@ -8,7 +8,7 @@ export default function DrinksPage() {
 
     // 🔄 Fetch Drinks from Backend
     useEffect(() => {
-        fetch('${API_BASE}/api/drinks')
+        fetch(`${API_BASE}/api/drinks`)
             .then((response) => response.json())
             .then((data) => {
                 console.log("Data fetched from backend:", data); // 🔎 Check this in console

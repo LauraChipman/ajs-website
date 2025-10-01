@@ -14,12 +14,12 @@ export default function Home() {
     const [facebookPosts, setFacebookPosts] = useState([]);
 
     useEffect(() => {
-        fetch('${API_BASE}/api/events')
+        fetch(`${API_BASE}/api/events`)
             .then(res => res.json())
             .then(data => setEvents(data))
             .catch(err => console.error("Error fetching events:", err));
 
-        fetch('${API_BASE}/api/social')
+        fetch(`${API_BASE}/api/social`)
             .then(res => res.json())
             .then(data => {
                 setInstagramPosts(data.instagram || []);

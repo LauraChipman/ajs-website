@@ -12,7 +12,7 @@ export default function AdminGalleryPage() {
     const [editingId, setEditingId] = useState(null);
 
     const fetchGallery = async () => {
-        const res = await axios.get('${API_BASE}/api/gallery');
+        const res = await axios.get(`${API_BASE}/api/gallery`);
         setGalleryItems(res.data);
     };
 
@@ -31,7 +31,7 @@ export default function AdminGalleryPage() {
                 await axios.put(`${API_BASE}/api/gallery/${editingId}`, form);
                 setMessage('✅ Gallery item updated!');
             } else {
-                await axios.post('${API_BASE}/api/gallery/upload', form);
+                await axios.post(`${API_BASE}/api/gallery/uploa`, form);
                 setMessage('✅ Gallery item added!');
             }
 

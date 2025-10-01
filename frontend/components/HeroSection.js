@@ -16,9 +16,9 @@ const HeroSection = () => {
         const fetchPreviews = async () => {
             try {
                 const [galleryRes, drinkRes, eventRes] = await Promise.all([
-                    axios.get('${API_BASE}/api/gallery'),
-                    axios.get('${API_BASE}/api/drinks'),
-                    axios.get('${API_BASE}/api/events')
+                    axios.get(`${API_BASE}/api/gallery`),
+                    axios.get(`${API_BASE}/api/drinks`),
+                    axios.get(`${API_BASE}/api/events`)
                 ]);
 
                 if (galleryRes.data.length > 0) setGalleryPreview(galleryRes.data[0]);

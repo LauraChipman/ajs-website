@@ -19,7 +19,7 @@ export default function AdminSettings() {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('${API_BASE}/api/admin/update-credentials', {
+            const res = await fetch(`${API_BASE}/api/admin/update-credentials`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

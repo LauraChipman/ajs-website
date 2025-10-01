@@ -19,7 +19,7 @@ export default function AdminEventsPage() {
     const [message, setMessage] = useState('');
 
     const fetchEvents = async () => {
-        const res = await axios.get('${API_BASE}/api/events');
+        const res = await axios.get(`${API_BASE}/api/events`);
         setEvents(res.data);
     };
 
@@ -49,7 +49,7 @@ export default function AdminEventsPage() {
                 });
                 setMessage('✅ Event updated!');
             } else {
-                await axios.post('${API_BASE}/api/events', form, {
+                await axios.post(`${API_BASE}/api/events`, form, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 setMessage('✅ Event added!');

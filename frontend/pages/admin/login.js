@@ -15,7 +15,7 @@ export default function AdminLogin() {
         setError('');
 
         try {
-            const response = await axios.post('${API_BASE}/api/login', {
+            const response = await axios.post(`${API_BASE}/api/login`, {
                 username,
                 password
             });

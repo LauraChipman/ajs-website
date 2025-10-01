@@ -11,7 +11,7 @@ export default function GalleryPage() {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                const res = await axios.get('${API_BASE}/api/gallery');
+                const res = await axios.get(`${API_BASE}/api/gallery`);
                 setGalleryItems(res.data);
             } catch (err) {
                 console.error('❌ Error fetching gallery:', err);

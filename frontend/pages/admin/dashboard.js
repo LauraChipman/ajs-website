@@ -20,7 +20,7 @@ export default function AdminDashboard() {
             }
 
             try {
-                const res = await fetch('${API_BASE}/api/admin', {
+                const res = await fetch(`${API_BASE}/api/admin`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
