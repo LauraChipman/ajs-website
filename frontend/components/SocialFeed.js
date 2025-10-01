@@ -4,18 +4,15 @@ export default function SocialFeed() {
     const [data, setData] = useState({ instagram: [], facebook: [] });
     const [loading, setLoading] = useState(true);
 
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
-        fetch('/api/social')
-            .then(res => res.json())
-            .then(data => {
-                setData(data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error("❌ Social fetch failed:", err);
-                setLoading(false);
-            });
+        fetch(`${API_BASE}/api/social`) // ✅ not relative
+            .then((res) => res.json())
+            .then((data) => setSocialPosts(data))
+            .catch((err) => console.error("Error fetching Social feed:", err));
     }, []);
+
 
     if (loading) return <p className="text-yellow-300">Loading social feed...</p>;
 

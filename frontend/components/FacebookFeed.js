@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 const FacebookFeed = () => {
     const [posts, setPosts] = useState([]);
 
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
-        // Placeholder fetch - this will be replaced with Facebook Graph API
-        fetch('/api/facebook')
-            .then(response => response.json())
-            .then(data => setPosts(data))
-            .catch(error => console.error('Error fetching Facebook posts:', error));
+        fetch(`${API_BASE}/api/facebook`) // ✅ not relative
+            .then((res) => res.json())
+            .then((data) => setFacebookPosts(data))
+            .catch((err) => console.error("Error fetching Facebook feed:", err));
     }, []);
+
 
     return (
         <div className="bg-slate-800 p-4 rounded-lg shadow-lg">

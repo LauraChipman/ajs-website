@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 const InstagramFeed = () => {
     const [photos, setPhotos] = useState([]);
 
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
-        // Placeholder fetch - this will be replaced with Instagram API
-        fetch('/api/instagram')
-            .then(response => response.json())
-            .then(data => setPhotos(data))
-            .catch(error => console.error('Error fetching Instagram photos:', error));
+        fetch(`${API_BASE}/api/instagram`) // ✅ not relative
+            .then((res) => res.json())
+            .then((data) => setInstagramPosts(data))
+            .catch((err) => console.error("Error fetching Instagram feed:", err));
     }, []);
+
 
     return (
         <div className="bg-slate-800 p-4 rounded-lg shadow-lg mt-8">
