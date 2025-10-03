@@ -31,20 +31,33 @@ function startServer() {
     mongoose.set('strictQuery', false);
 
     // ✅ Middleware
-    const allowedOrigins = [
+    const staticAllowedOrigins = [
         'http://localhost:3000',
         'http://localhost:3001',
         'https://ajs-website-8d33.vercel.app',
         'https://ajs-website.vercel.app'
     ];
 
+    const envAllowedOrigins = (process.env.CLIENT_ORIGINS || '')
+        .split(',')
+        .map(origin => origin.trim())
+        .filter(Boolean);
+
+    const allowedOrigins = new Set([...staticAllowedOrigins, ...envAllowedOrigins]);
+    const vercelPreviewPattern = /^https:\/\/[a-z0-9-]+\.vercel\.app$/i;
+
     app.use(cors({
         origin: function (origin, callback) {
-            if (!origin || allowedOrigins.includes(origin)) {
-                callback(null, true);
-            } else {
-                callback(new Error('Not allowed by CORS'));
+            if (!origin) {
+                return callback(null, true);
             }
+
+            if (allowedOrigins.has(origin) || vercelPreviewPattern.test(origin)) {
+                return callback(null, true);
+            }
+
+            console.warn(`🚫 CORS blocked request from origin: ${origin}`);
+            return callback(new Error('Not allowed by CORS'));
         },
         credentials: true
     }));
